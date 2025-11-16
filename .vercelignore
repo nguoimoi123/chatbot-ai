@@ -8,4 +8,4 @@ uv.lock
 data/
 .replit*
 .local/
-client/dist/
+
