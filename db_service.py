@@ -18,11 +18,19 @@ def get_db():
         mongo_uri = os.environ.get("MONGODB_URI")
         if not mongo_uri:
             raise Exception("MONGODB_URI not set in environment variables.")
-        _mongo_client = MongoClient(mongo_uri)
+        
+        # Bật TLS explicitly
+        _mongo_client = MongoClient(
+            mongo_uri,
+            tls=True,
+            tlsAllowInvalidCertificates=False  # True nếu muốn bypass SSL lỗi test
+        )
+        
         db_name = os.environ.get("MONGODB_DATABASE", "football_gpt_auth")
         _db = _mongo_client[db_name]
         logging.info(f"Connected to MongoDB database: {db_name}")
     return _db
+
 
 # --- User Operations ---
 def find_user_by_id(user_id: str):
