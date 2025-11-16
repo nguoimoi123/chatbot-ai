@@ -1,11 +1,28 @@
-__pycache__/
+# Ignore backend code (Python) – không deploy backend lên Vercel
+*.py
 *.pyc
 *.pyo
 *.pyd
-*.pdb
+__pycache__/
+venv/
+.venv/
+db_service.py
+app.py
+requirements.txt
 *.lock
-uv.lock
-data/
-.replit*
-.local/
 
+# Ignore backend configs / secrets
+.env
+.env.*
+.local/
+.replit*
+uv.lock
+
+# Ignore logs
+*.log
+
+# Ignore node_modules – Vercel sẽ cài dependencies
+node_modules/
+
+# Ignore frontend build output – nếu bạn muốn Vercel tự build
+client/dist/
