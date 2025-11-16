@@ -1,0 +1,55 @@
+# ---- Python ----
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.pdb
+*.egg-info/
+.env
+.venv/
+venv/
+
+# ---- Replit / Internal agent files ----
+.replit
+replit.*
+.replit_auth.py
+.replit_secrets*
+.local/
+.config/
+*.bin
+
+# ---- Node / Frontend ----
+node_modules/
+client/node_modules/
+client/dist/
+client/.vite/
+
+# ---- Logs ----
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# ---- OS files ----
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# ---- Git safe backup ----
+.gitsafe-backup/
+
+# ---- Environment / IDE ----
+.vscode/
+.idea/
+
+# ---- Build files ----
+*.lock
+uv.lock
+
+# ---- Backup files ----
+*.bak
+*.tmp
+
+# ---- Others that appear in your structure ----
+filesystem_state.json
+progress_tracker.md
