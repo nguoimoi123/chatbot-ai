@@ -13,7 +13,7 @@ logging.basicConfig(level=logging.DEBUG)
 
 
 # Initialize Flask app
-app = Flask(__name__, static_url_path='')
+app = Flask(__name__, static_folder='client/dist', static_url_path='')
 app.secret_key = os.environ.get("SESSION_SECRET", "super_secret_key_123")
 app.wsgi_app = ProxyFix(app.wsgi_app, x_proto=1, x_host=1)
 
