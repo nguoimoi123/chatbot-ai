@@ -10,6 +10,7 @@ export default function ChatPage({ user }) {
   const [guestMode, setGuestMode] = useState(false)
   const [personality, setPersonality] = useState('neutral') // Thêm state cho tính cách
   const messagesEndRef = useRef(null)
+  const API_BASE_URL = import.meta.env.VITE_API_BASE_URL
 
   const isLoggedIn = !!user
 
@@ -30,7 +31,7 @@ export default function ChatPage({ user }) {
   const loadConversations = async () => {
     if (!isLoggedIn) return
     try {
-      const response = await fetch('/api/conversations', {
+      const response = await fetch(`${API_BASE_URL}/api/conversations`, {
         credentials: 'include'
       })
       if (response.ok) {
@@ -45,7 +46,7 @@ export default function ChatPage({ user }) {
   const loadConversation = async (conversationId) => {
     if (!isLoggedIn) return
     try {
-      const response = await fetch(`/api/conversations/${conversationId}`, {
+      const response = await fetch(`${API_BASE_URL}/api/conversations/${conversationId}`, {
         credentials: 'include'
       })
       if (response.ok) {
@@ -68,7 +69,7 @@ export default function ChatPage({ user }) {
     if (!confirm('Bạn có chắc muốn xóa cuộc trò chuyện này?')) return
     
     try {
-      const response = await fetch(`/api/conversations/${conversationId}`, {
+      const response = await fetch(`${API_BASE_URL}/api/conversations/${conversationId}`, {
         method: 'DELETE',
         credentials: 'include'
       })
@@ -91,7 +92,7 @@ export default function ChatPage({ user }) {
     setLoading(true)
 
     try {
-      const response = await fetch('/api/chat', {
+      const response = await fetch(`${API_BASE_URL}/api/chat`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         credentials: 'include',
@@ -126,11 +127,11 @@ export default function ChatPage({ user }) {
   }
 
   const handleLogin = () => {
-    window.location.href = '/'
+    window.location.href = `${API_BASE_URL}/auth/login`
   }
 
   const handleLogout = () => {
-    window.location.href = '/auth/logout'
+    window.location.href = `${API_BASE_URL}/auth/logout`
   }
 
   return (
